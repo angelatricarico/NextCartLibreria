@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Classe che rappresenta i dati di un utente.
+ * La classe UserDTO rappresenta un utente con vari attributi e appartenenza a un gruppo.
  */
 public class UserDTO {
 
@@ -13,6 +13,7 @@ public class UserDTO {
     private String cognome;
     private String email;
     private String password;
+    private GroupDTO groupDTO;
     private Set<RoleDTO> ruoli;
 
     /**
@@ -24,53 +25,61 @@ public class UserDTO {
     /**
      * Costruttore con parametri.
      *
-     * @param id       L'ID dell'utente.
-     * @param nome     Il nome dell'utente.
-     * @param cognome  Il cognome dell'utente.
-     * @param email    L'email dell'utente.
-     * @param password La password dell'utente.
-     * @param ruoli    I ruoli associati all'utente.
+     * @param id       Identificatore univoco dell'utente.
+     * @param nome     Nome dell'utente.
+     * @param cognome  Cognome dell'utente.
+     * @param email    Indirizzo email dell'utente.
+     * @param password Password dell'utente.
+     * @param groupDTO Gruppo a cui l'utente appartiene.
+     * @param ruoli    Set di ruoli associati all'utente.
      */
-    public UserDTO(Long id, String nome, String cognome, String email, String password, Set<RoleDTO> ruoli) {
+    public UserDTO(Long id,
+                   String nome,
+                   String cognome,
+                   String email,
+                   String password,
+                   GroupDTO groupDTO,
+                   Set<RoleDTO> ruoli) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.password = password;
-        this.ruoli = ruoli;
+        this.groupDTO = groupDTO;
+        this.ruoli = new HashSet<>(ruoli);
     }
 
     /**
-     * Metodo factory per creare un {@link UserDTOBuilder}.
+     * Metodo per ottenere un builder di UserDTO.
      *
-     * @return una nuova istanza di {@link UserDTOBuilder}.
+     * @return Istanza di UserDTOBuilder.
      */
     public static UserDTOBuilder of() {
         return new UserDTOBuilder();
     }
 
     /**
-     * Ottiene l'ID dell'utente.
+     * Restituisce l'identificatore dell'utente.
      *
-     * @return L'ID dell'utente.
+     * @return Identificatore dell'utente.
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Imposta l'ID dell'utente.
+     * Imposta l'identificatore dell'utente.
      *
-     * @param id L'ID da impostare.
+     * @param id Identificatore univoco dell'utente.
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * Ottiene il nome dell'utente.
+     * Restituisce il nome dell'utente.
      *
-     * @return Il nome dell'utente.
+     * @return Nome dell'utente.
      */
     public String getNome() {
         return nome;
@@ -79,16 +88,16 @@ public class UserDTO {
     /**
      * Imposta il nome dell'utente.
      *
-     * @param nome Il nome da impostare.
+     * @param nome Nome dell'utente.
      */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
     /**
-     * Ottiene il cognome dell'utente.
+     * Restituisce il cognome dell'utente.
      *
-     * @return Il cognome dell'utente.
+     * @return Cognome dell'utente.
      */
     public String getCognome() {
         return cognome;
@@ -97,34 +106,34 @@ public class UserDTO {
     /**
      * Imposta il cognome dell'utente.
      *
-     * @param cognome Il cognome da impostare.
+     * @param cognome Cognome dell'utente.
      */
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
 
     /**
-     * Ottiene l'email dell'utente.
+     * Restituisce l'indirizzo email dell'utente.
      *
-     * @return L'email dell'utente.
+     * @return Indirizzo email dell'utente.
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * Imposta l'email dell'utente.
+     * Imposta l'indirizzo email dell'utente.
      *
-     * @param email L'email da impostare.
+     * @param email Indirizzo email dell'utente.
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     * Ottiene la password dell'utente.
+     * Restituisce la password dell'utente.
      *
-     * @return La password dell'utente.
+     * @return Password dell'utente.
      */
     public String getPassword() {
         return password;
@@ -133,32 +142,50 @@ public class UserDTO {
     /**
      * Imposta la password dell'utente.
      *
-     * @param password La password da impostare.
+     * @param password Password dell'utente.
      */
     public void setPassword(String password) {
         this.password = password;
     }
 
     /**
-     * Ottiene i ruoli dell'utente.
+     * Restituisce i ruoli dell'utente.
      *
-     * @return I ruoli dell'utente.
+     * @return Set di ruoli dell'utente.
      */
     public Set<RoleDTO> getRuoli() {
-        return ruoli;
+        return new HashSet<>(ruoli);
     }
 
     /**
      * Imposta i ruoli dell'utente.
      *
-     * @param ruoli I ruoli da impostare.
+     * @param ruoli Set di ruoli da associare all'utente.
      */
     public void setRuoli(Set<RoleDTO> ruoli) {
         this.ruoli = new HashSet<>(ruoli);
     }
 
     /**
-     * Classe di supporto per la costruzione di oggetti {@link UserDTO}.
+     * Restituisce il gruppo associato all'utente.
+     *
+     * @return Gruppo dell'utente.
+     */
+    public GroupDTO getGroupDTO() {
+        return groupDTO;
+    }
+
+    /**
+     * Imposta il gruppo associato all'utente.
+     *
+     * @param groupDTO Gruppo da associare all'utente.
+     */
+    public void setGroupDTO(GroupDTO groupDTO) {
+        this.groupDTO = groupDTO;
+    }
+
+    /**
+     * Classe builder per la costruzione di istanze di UserDTO.
      */
     public static class UserDTOBuilder {
 
@@ -167,13 +194,14 @@ public class UserDTO {
         private String cognome;
         private String email;
         private String password;
+        private GroupDTO groupDTO;
         private Set<RoleDTO> ruoli;
 
         /**
-         * Imposta l'ID nel builder.
+         * Imposta l'identificatore dell'utente.
          *
-         * @param id L'ID da impostare.
-         * @return L'istanza aggiornata del builder.
+         * @param id Identificatore univoco dell'utente.
+         * @return Istanza corrente di UserDTOBuilder.
          */
         public UserDTOBuilder id(Long id) {
             this.id = id;
@@ -181,10 +209,10 @@ public class UserDTO {
         }
 
         /**
-         * Imposta il nome nel builder.
+         * Imposta il nome dell'utente.
          *
-         * @param nome Il nome da impostare.
-         * @return L'istanza aggiornata del builder.
+         * @param nome Nome dell'utente.
+         * @return Istanza corrente di UserDTOBuilder.
          */
         public UserDTOBuilder nome(String nome) {
             this.nome = nome;
@@ -192,10 +220,10 @@ public class UserDTO {
         }
 
         /**
-         * Imposta il cognome nel builder.
+         * Imposta il cognome dell'utente.
          *
-         * @param cognome Il cognome da impostare.
-         * @return L'istanza aggiornata del builder.
+         * @param cognome Cognome dell'utente.
+         * @return Istanza corrente di UserDTOBuilder.
          */
         public UserDTOBuilder cognome(String cognome) {
             this.cognome = cognome;
@@ -203,10 +231,10 @@ public class UserDTO {
         }
 
         /**
-         * Imposta l'email nel builder.
+         * Imposta l'indirizzo email dell'utente.
          *
-         * @param email L'email da impostare.
-         * @return L'istanza aggiornata del builder.
+         * @param email Indirizzo email dell'utente.
+         * @return Istanza corrente di UserDTOBuilder.
          */
         public UserDTOBuilder email(String email) {
             this.email = email;
@@ -214,10 +242,10 @@ public class UserDTO {
         }
 
         /**
-         * Imposta la password nel builder.
+         * Imposta la password dell'utente.
          *
-         * @param password La password da impostare.
-         * @return L'istanza aggiornata del builder.
+         * @param password Password dell'utente.
+         * @return Istanza corrente di UserDTOBuilder.
          */
         public UserDTOBuilder password(String password) {
             this.password = password;
@@ -225,23 +253,34 @@ public class UserDTO {
         }
 
         /**
-         * Imposta i ruoli nel builder.
+         * Imposta il gruppo dell'utente.
          *
-         * @param ruoli I ruoli da impostare.
-         * @return L'istanza aggiornata del builder.
+         * @param groupDTO Gruppo dell'utente.
+         * @return Istanza corrente di UserDTOBuilder.
          */
-        public UserDTOBuilder ruoli(Set<RoleDTO> ruoli) {
-            this.ruoli = new HashSet<>(ruoli);
+        public UserDTOBuilder groupDTO(GroupDTO groupDTO) {
+            this.groupDTO = groupDTO;
             return this;
         }
 
         /**
-         * Costruisce un'istanza di {@link UserDTO} con i valori impostati.
+         * Imposta i ruoli dell'utente.
          *
-         * @return Una nuova istanza di {@link UserDTO}.
+         * @param ruoli Set di ruoli dell'utente.
+         * @return Istanza corrente di UserDTOBuilder.
+         */
+        public UserDTOBuilder ruoli(Set<RoleDTO> ruoli) {
+            this.ruoli = ruoli;
+            return this;
+        }
+
+        /**
+         * Costruisce un'istanza di UserDTO con i parametri impostati.
+         *
+         * @return Nuova istanza di UserDTO.
          */
         public UserDTO build() {
-            return new UserDTO(id, nome, cognome, email, password, ruoli);
+            return new UserDTO(id, nome, cognome, email, password, groupDTO, ruoli);
         }
     }
 }

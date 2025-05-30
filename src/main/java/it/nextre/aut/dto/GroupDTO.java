@@ -1,12 +1,15 @@
 package it.nextre.aut.dto;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
- * Classe che rappresenta un gruppo associato a un ruolo utente.
+ * La classe GroupDTO rappresenta un gruppo con un identificatore e un set di ruoli.
  */
 public class GroupDTO {
 
     private Long id;
-    private RoleDTO roleDTO;
+    private Set<RoleDTO> roleDTO;
 
     /**
      * Costruttore di default.
@@ -17,75 +20,79 @@ public class GroupDTO {
     /**
      * Costruttore con parametri.
      *
-     * @param id      L'ID del gruppo.
-     * @param roleDTO Il ruolo associato al gruppo.
+     * @param id      Identificatore univoco del gruppo.
+     * @param roleDTO Set di ruoli associati al gruppo.
      */
-    public GroupDTO(Long id, RoleDTO roleDTO) {
+    public GroupDTO(Long id, Set<RoleDTO> roleDTO) {
         this.id = id;
         this.roleDTO = roleDTO;
     }
 
     /**
-     * Metodo factory per creare un {@link GroupDTOBuilder}.
+     * Metodo per ottenere un builder di GroupDTO.
      *
-     * @return una nuova istanza di {@link GroupDTOBuilder}.
+     * @return Istanza di GroupDTOBuilder.
      */
     public static GroupDTOBuilder of() {
         return new GroupDTOBuilder();
     }
 
     /**
-     * Ottiene l'ID del gruppo.
+     * Restituisce l'identificatore del gruppo.
      *
-     * @return L'ID del gruppo.
+     * @return Identificatore del gruppo.
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Imposta l'ID del gruppo.
+     * Imposta l'identificatore del gruppo.
      *
-     * @param id L'ID da impostare.
+     * @param id Identificatore univoco del gruppo.
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * Ottiene il ruolo associato al gruppo.
+     * Restituisce una copia del set di ruoli associati al gruppo.
      *
-     * @return Il ruolo del gruppo.
+     * @return Set di ruoli del gruppo.
      */
-    public RoleDTO getRoleDTO() {
-        return roleDTO;
+    public Set<RoleDTO> getRoleDTO() {
+        return new HashSet<>(roleDTO);
     }
 
     /**
-     * Imposta il ruolo associato al gruppo.
+     * Imposta il set di ruoli del gruppo.
      *
-     * @param roleDTO Il ruolo da impostare.
+     * @param roleDTO Set di ruoli da associare al gruppo.
      */
-    public void setRoleDTO(RoleDTO roleDTO) {
-        this.roleDTO = roleDTO;
+    public void setRoleDTO(Set<RoleDTO> roleDTO) {
+        this.roleDTO = new HashSet<>(roleDTO);
     }
 
     /**
-     * Classe di supporto per la costruzione di oggetti {@link GroupDTO}.
+     * Classe builder per la costruzione di istanze di GroupDTO.
      */
     public static class GroupDTOBuilder {
 
+        /**
+         * Identificatore univoco del gruppo.
+         */
         private Long id;
-        private RoleDTO roleDTO;
-
-        private GroupDTOBuilder() {
-        }
 
         /**
-         * Imposta l'ID nel builder.
+         * Set di ruoli associati al gruppo.
+         */
+        private Set<RoleDTO> roleDTO;
+
+        /**
+         * Imposta l'identificatore del gruppo.
          *
-         * @param id L'ID da impostare.
-         * @return L'istanza aggiornata del builder.
+         * @param id Identificatore univoco del gruppo.
+         * @return Istanza corrente di GroupDTOBuilder.
          */
         public GroupDTOBuilder id(Long id) {
             this.id = id;
@@ -93,20 +100,20 @@ public class GroupDTO {
         }
 
         /**
-         * Imposta il ruolo nel builder.
+         * Imposta il set di ruoli associati al gruppo.
          *
-         * @param roleDTO Il ruolo da impostare.
-         * @return L'istanza aggiornata del builder.
+         * @param roleDTO Set di ruoli da associare al gruppo.
+         * @return Istanza corrente di GroupDTOBuilder.
          */
-        public GroupDTOBuilder roleDTO(RoleDTO roleDTO) {
+        public GroupDTOBuilder roleDTO(Set<RoleDTO> roleDTO) {
             this.roleDTO = roleDTO;
             return this;
         }
 
         /**
-         * Costruisce un'istanza di {@link GroupDTO} con i valori impostati.
+         * Costruisce un'istanza di GroupDTO con i parametri impostati.
          *
-         * @return Una nuova istanza di {@link GroupDTO}.
+         * @return Nuova istanza di GroupDTO.
          */
         public GroupDTO build() {
             return new GroupDTO(id, roleDTO);
