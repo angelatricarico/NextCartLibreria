@@ -1,6 +1,7 @@
 package it.nextre.aut.service;
 
 import it.nextre.aut.dto.UserDTO;
+import it.nextre.aut.pagination.PagedResult;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,4 +33,13 @@ public interface UserAdminService extends UserService {
      * @return Un {@link Optional} contenente l'utente, se trovato.
      */
     Optional<UserDTO> findById(Long id);
+
+    /**
+     * Recupera un elenco paginato di utenti.
+     *
+     * @param page Numero della pagina da recuperare (indice base 0).
+     * @param size Numero di elementi per pagina.
+     * @return Un oggetto {@code PagedResult<UserDTO>} contenente gli utenti e i meta-dati della paginazione.
+     */
+    PagedResult<UserDTO> getAllUsersPag(int page, int size);
 }

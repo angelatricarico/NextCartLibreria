@@ -1,6 +1,7 @@
 package it.nextre.aut.service;
 
 import it.nextre.aut.dto.GroupDTO;
+import it.nextre.aut.pagination.PagedResult;
 
 import java.util.List;
 import java.util.Optional;
@@ -45,4 +46,13 @@ public interface GroupService {
      * @return Una lista di {@link GroupDTO}.
      */
     List<GroupDTO> getAllGroups();
+
+    /**
+     * Recupera un elenco paginato di gruppi.
+     *
+     * @param page Numero della pagina da recuperare (indice base 0).
+     * @param size Numero di elementi per pagina.
+     * @return Un oggetto {@code PagedResult<GroupDTO>} contenente i gruppi e i meta-dati della paginazione.
+     */
+    PagedResult<GroupDTO> getAllGroupsPag(int page, int size);
 }
