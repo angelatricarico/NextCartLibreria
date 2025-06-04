@@ -1,6 +1,7 @@
 package it.nextre.aut.service;
 
 import it.nextre.aut.dto.LoginInfo;
+import it.nextre.aut.dto.TokenJwtDTO;
 import it.nextre.aut.dto.UserDTO;
 
 /**
@@ -12,17 +13,17 @@ public interface UserService {
      * Effettua il login di un utente.
      *
      * @param loginInfo Le informazioni di login dell'utente.
-     * @return Un token di autenticazione o un messaggio di conferma.
+     * @return Un token di autenticazione.
      */
-    String login(LoginInfo loginInfo);
+    TokenJwtDTO login(LoginInfo loginInfo);
 
     /**
      * Registra un nuovo utente nel sistema.
      *
      * @param userDTO I dati dell'utente da registrare.
-     * @return Un token di autenticazione o un messaggio di conferma.
+     * @return Un token di autenticazione.
      */
-    String register(UserDTO userDTO);
+    TokenJwtDTO register(UserDTO userDTO);
 
     /**
      * Aggiorna i dati di un utente esistente.
