@@ -1,17 +1,17 @@
 package it.nextre.nextcart.dto;
 
+import java.math.BigDecimal;
+
 public class ProdottoDTO {
     private Long id;
     private String nome;
-    private String descrizione;
-    private int quantita;
+    private BigDecimal quantita;
     private String percorsoImmagine;
     private CategoriaDTO categoriaDTO; 
 
-    public ProdottoDTO(Long id, String nome, String descrizione, int quantita, String percorsoImmagine, CategoriaDTO categoriaDTO) {
+    public ProdottoDTO(Long id, String nome, BigDecimal quantita, String percorsoImmagine, CategoriaDTO categoriaDTO) {
         this.id = id;
         this.nome = nome;
-        this.descrizione = descrizione;
         this.quantita = quantita;
         this.percorsoImmagine = percorsoImmagine;
         this.categoriaDTO = categoriaDTO;
@@ -38,19 +38,11 @@ public class ProdottoDTO {
 		this.nome = nome;
 	}
 
-	public String getDescrizione() {
-		return descrizione;
-	}
-
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
-	}
-
-	public int getQuantita() {
+	public BigDecimal getQuantita() {
 		return quantita;
 	}
 
-	public void setQuantita(int quantita) {
+	public void setQuantita(BigDecimal quantita) {
 		this.quantita = quantita;
 	}
 
