@@ -24,6 +24,14 @@ public interface UserService {
      * @return Un token di autenticazione.
      */
     TokenJwtDTO register(UserDTO userDTO);
+    
+    
+    /**
+     * refresh del token JWT. (durata refresh token 1 giorno)
+     * 
+     * @return Un token di autenticazione aggiornato.
+     */ 
+    TokenJwtDTO refreshToken();
 
     /**
      * Aggiorna i dati di un utente esistente.
