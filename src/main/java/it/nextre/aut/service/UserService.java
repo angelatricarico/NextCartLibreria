@@ -21,17 +21,17 @@ public interface UserService {
      * Registra un nuovo utente nel sistema.
      *
      * @param userDTO I dati dell'utente da registrare.
-     * @return Un token di autenticazione.
      */
-    TokenJwtDTO register(UserDTO userDTO);
+    void register(UserDTO userDTO);
     
     
     /**
      * refresh del token JWT. (durata refresh token 1 giorno)
      * 
+     * @param userDTO I dati dell'utente per il quale si desidera aggiornare il token. passato dal controller
      * @return Un token di autenticazione aggiornato.
      */ 
-    TokenJwtDTO refreshToken();
+    TokenJwtDTO refreshToken(UserDTO userDTO);
 
     /**
      * Aggiorna i dati di un utente esistente.
@@ -46,4 +46,8 @@ public interface UserService {
      * @param userDTO L'utente da eliminare.
      */
     void delete(UserDTO userDTO);
+
+
+    TokenJwtDTO confirmRegistration(String tokenDTO);
+
 }
