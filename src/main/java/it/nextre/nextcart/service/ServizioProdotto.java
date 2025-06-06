@@ -9,6 +9,5 @@ import it.nextre.nextcart.dto.ProdottoDTO;
 public interface ServizioProdotto {
 
     Optional<ProdottoDTO> trovaPerId(Long id);
-    List<ProdottoDTO> trovaTutti();
     List<ProdottoDTO> trovaPerIdCategoria(Long idCategoria);
 }
