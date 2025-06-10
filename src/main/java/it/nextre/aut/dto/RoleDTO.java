@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Classe che rappresenta un ruolo utente nel sistema.
  */
-public class RoleDTO extends DTO{
+public class RoleDTO extends DTO {
 
     private Long priority;
     private Boolean admin;
@@ -25,7 +25,10 @@ public class RoleDTO extends DTO{
      * @param admin       Indica se il ruolo ha privilegi di amministratore.
      * @param descrizione La descrizione del ruolo.
      */
-    public RoleDTO(Long id, Long priority, Boolean admin, String descrizione) {
+    public RoleDTO(Long id,
+                   Long priority,
+                   Boolean admin,
+                   String descrizione) {
         this.id = id;
         this.priority = priority;
         this.admin = admin;
@@ -39,24 +42,6 @@ public class RoleDTO extends DTO{
      */
     public static RoleDTOBuilder of() {
         return new RoleDTOBuilder();
-    }
-
-    /**
-     * Ottiene l'ID del ruolo.
-     *
-     * @return L'ID del ruolo.
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Imposta l'ID del ruolo.
-     *
-     * @param id L'ID da impostare.
-     */
-    public void setId(Long id) {
-        this.id = id;
     }
 
     /**
@@ -117,7 +102,10 @@ public class RoleDTO extends DTO{
     public boolean equals(Object o) {
         if (!(o instanceof RoleDTO roleDTO)) return false;
 
-        return Objects.equals(id, roleDTO.id) && Objects.equals(priority, roleDTO.priority) && Objects.equals(admin, roleDTO.admin) && Objects.equals(descrizione, roleDTO.descrizione);
+        return Objects.equals(id, roleDTO.id) &&
+                Objects.equals(priority, roleDTO.priority) &&
+                Objects.equals(admin, roleDTO.admin) &&
+                Objects.equals(descrizione, roleDTO.descrizione);
     }
 
     @Override
