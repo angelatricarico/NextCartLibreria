@@ -5,9 +5,8 @@ import java.util.Objects;
 /**
  * Classe che rappresenta un ruolo utente nel sistema.
  */
-public class RoleDTO {
+public class RoleDTO extends DTO{
 
-    private Long id;
     private Long priority;
     private Boolean admin;
     private String descrizione;

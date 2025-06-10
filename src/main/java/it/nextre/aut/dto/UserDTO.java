@@ -6,9 +6,8 @@ import java.util.Set;
 /**
  * La classe UserDTO rappresenta un utente con vari attributi e appartenenza a un gruppo.
  */
-public class UserDTO {
+public class UserDTO extends DTO{
 
-    private Long id;
     private String nome;
     private String cognome;
     private String email;

@@ -6,9 +6,8 @@ import java.util.Set;
 /**
  * La classe GroupDTO rappresenta un gruppo con un identificatore e un set di ruoli.
  */
-public class GroupDTO {
+public class GroupDTO extends DTO{
 
-    private Long id;
     private Set<RoleDTO> roleDTO;
 
     /**
