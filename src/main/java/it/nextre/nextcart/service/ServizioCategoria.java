@@ -8,8 +8,6 @@ import java.util.Optional;
 
 public interface ServizioCategoria {
 
-    CategoriaDTO salva(CategoriaDTO categoriaDTO);
-
     /**
      * Trova una categoria per il suo ID.
      *
@@ -18,13 +16,6 @@ public interface ServizioCategoria {
      */
     Optional<CategoriaDTO> trovaPerId(Long id);
 
-    /**
-     * Trova una categoria per il suo nome (case-insensitive).
-     *
-     * @param nome Il nome della categoria.
-     * @return Un Optional contenente il DTO della categoria se trovata, altrimenti Optional.empty().
-     */
-    Optional<CategoriaDTO> trovaPerNome(String nome);
 
     /**
      * Recupera tutte le categorie.
@@ -33,8 +24,4 @@ public interface ServizioCategoria {
      */
     List<CategoriaDTO> trovaTutte();
 
-    CategoriaDTO modifica(CategoriaDTO categoriaDTO);
-
-
-    void elimina(Long id) ;
 }

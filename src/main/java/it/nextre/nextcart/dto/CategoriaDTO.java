@@ -2,14 +2,8 @@ package it.nextre.nextcart.dto;
 
 public class CategoriaDTO {
 	private Long id;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	private String nome;
+	private String percorsoImmagine;
 
 	public CategoriaDTO(Long id, String nome, String percorsoImmagine) {
 		this.id = id;
@@ -18,6 +12,14 @@ public class CategoriaDTO {
 	}
 
 	public CategoriaDTO() {
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -36,6 +38,5 @@ public class CategoriaDTO {
 		this.percorsoImmagine = percorsoImmagine;
 	}
 
-	private String nome;
-	private String percorsoImmagine;
+
 }
