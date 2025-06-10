@@ -1,26 +1,19 @@
 package it.nextre.nextcart.dto;
 
+
 import java.math.BigDecimal;
 
-public class ProdottoDTO {
-    private Long id;
-    private String nome;
-    private BigDecimal quantita;
-    private String percorsoImmagine;
-    private CategoriaDTO categoriaDTO; 
 
-    public ProdottoDTO(Long id, String nome, BigDecimal quantita, String percorsoImmagine, CategoriaDTO categoriaDTO) {
-        this.id = id;
-        this.nome = nome;
-        this.quantita = quantita;
-        this.percorsoImmagine = percorsoImmagine;
-        this.categoriaDTO = categoriaDTO;
-    }
-    
-    public ProdottoDTO() {
-    	
-    	
-    }
+public class ProdottoDTO {
+	private Long id;
+
+	private String nome;
+
+	private String descrizione;
+
+	private BigDecimal quantita;
+
+	private String percorsoImmagine;
 
 	public Long getId() {
 		return id;
@@ -34,8 +27,30 @@ public class ProdottoDTO {
 		return nome;
 	}
 
+	public ProdottoDTO() {
+	}
+
+	public ProdottoDTO(Long id, String nome, String descrizione, BigDecimal quantita, String percorsoImmagine, Long categoriaId, String categoriaNome, String tipologia) {
+		this.id = id;
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.quantita = quantita;
+		this.percorsoImmagine = percorsoImmagine;
+		this.categoriaId = categoriaId;
+		this.categoriaNome = categoriaNome;
+		this.tipologia = tipologia;
+	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
 	public BigDecimal getQuantita() {
@@ -54,14 +69,33 @@ public class ProdottoDTO {
 		this.percorsoImmagine = percorsoImmagine;
 	}
 
-	public CategoriaDTO getCategoriaDTO() {
-		return categoriaDTO;
+	public Long getCategoriaId() {
+		return categoriaId;
 	}
 
-	public void setCategoriaDTO(CategoriaDTO categoriaDTO) {
-		this.categoriaDTO = categoriaDTO;
+	public void setCategoriaId(Long categoriaId) {
+		this.categoriaId = categoriaId;
 	}
-    
+
+	public String getCategoriaNome() {
+		return categoriaNome;
+	}
+
+	public void setCategoriaNome(String categoriaNome) {
+		this.categoriaNome = categoriaNome;
+	}
+
+	public String getTipologia() {
+		return tipologia;
+	}
+
+	public void setTipologia(String tipologia) {
+		this.tipologia = tipologia;
+	}
 
 
+	private Long categoriaId;
+	private String categoriaNome;
+
+	private String tipologia;
 }
