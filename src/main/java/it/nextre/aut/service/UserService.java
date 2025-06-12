@@ -37,15 +37,18 @@ public interface UserService {
      * Aggiorna i dati di un utente esistente.
      *
      * @param userDTO I dati aggiornati dell'utente.
+     * @param user L'utente che sta effettuando l'aggiornamento (per controlli di autorizzazione).
      */
-    void update(UserDTO userDTO);
+    void update(UserDTO userDTO,UserDTO user);
 
     /**
      * Elimina un utente dal sistema.
      *
      * @param userDTO L'utente da eliminare.
+     * @param user L'utente che sta effettuando l'aggiornamento (per controlli di autorizzazione).
+    
      */
-    void delete(UserDTO userDTO);
+    void delete(UserDTO userDTO,UserDTO user);
 
 
     TokenJwtDTO confirmRegistration(String tokenDTO);
