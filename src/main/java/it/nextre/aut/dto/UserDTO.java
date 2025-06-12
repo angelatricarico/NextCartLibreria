@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * La classe UserDTO rappresenta un utente con vari attributi e appartenenza a un gruppo.
  */
-public class UserDTO extends DTO{
+public class UserDTO extends DTO {
 
     private String nome;
     private String cognome;
@@ -55,24 +55,6 @@ public class UserDTO extends DTO{
      */
     public static UserDTOBuilder of() {
         return new UserDTOBuilder();
-    }
-
-    /**
-     * Restituisce l'identificatore dell'utente.
-     *
-     * @return Identificatore dell'utente.
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Imposta l'identificatore dell'utente.
-     *
-     * @param id Identificatore univoco dell'utente.
-     */
-    public void setId(Long id) {
-        this.id = id;
     }
 
     /**
